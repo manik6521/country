@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="buddiesApi">
+
+    </div>
+
+    <script>
+        const user =() =>{
+            fetch('https://randomuser.me/api/?results=5')
+            .then (res => res.json())
+            .then (data => display(data));
+        }
+        user();
+        const display = (data) => {
+            const buddies = data.results;
+            const buddiesDiv = document.getElementById("buddiesApi")
+            for(const boddy of buddies){
+                console.log(boddy)
+                const p = document.createElement('p')
+                p.innerText = `Name: ${boddy.name.title} ${boddy.name.first} ${boddy.name.last}, User email: ${boddy.email}, Gender: ${boddy.gender}, Number: ${boddy.cell}`;
+                buddiesDiv.appendChild(p);
+            }
+        }
+    </script>
+</body>
+</html>
